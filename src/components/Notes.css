@@ -8,6 +8,36 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+.note-container{
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin: 0px 10px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 5px 5px 5px rgb(245, 245, 245);
+    width: 200px;
+    background-color: white;
+}
+.trash-icon{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
+}
+.note-container:hover{
+    transform: scale(1.1);
+}
+.note-container:hover .trash-icon{
+   display: inline;
+}
+.note-creationDate{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+}
 .spinner {
     width: 48px;
     height: 48px;
