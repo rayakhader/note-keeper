@@ -1,0 +1,18 @@
+.App-header{
+  border: 1px solid lightgray;
+  padding: 0px 10px;
+  box-shadow: 0px 1px 4px lightgray;
+}
+.App-header nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.search-input{
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  outline: none;
+  background-color: rgb(245, 245, 245);
+}
