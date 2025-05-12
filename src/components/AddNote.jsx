@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
+import { AddNoteAPI } from '../APIs/AddNoteAPI'
 
-function AddNote({ fetchNotes }) {
+function AddNote({ refetchNotes }) {
     const [expandAdd, setExpandAdd] = useState(false)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     function expandAddNote() {
         setExpandAdd(true)
+    }
+    const reset = () => {
+        setTitle('')
+        setContent('')
+        setExpandAdd(false)
+        refetchNotes()
     }
     function handleAddNote(e) {
         e.stopPropagation()
@@ -15,26 +22,7 @@ function AddNote({ fetchNotes }) {
             return;
         }
 
-        fetch('http://localhost:3000/api/notes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: title,
-                content: content
-            })
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setTitle('')
-                setContent('')
-                setExpandAdd(false)
-                fetchNotes()
-                console.log(data)
-            }).catch(error => {
-                console.error('Error adding note:', error.message);
-            });
+        AddNoteAPI(title, content, reset)
     }
 
     return (
