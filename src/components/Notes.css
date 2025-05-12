@@ -8,6 +8,86 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+.note-container{
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin: 0px 10px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 5px 5px 5px rgb(245, 245, 245);
+    width: 200px;
+    background-color: white;
+}
+.trash-icon{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: none;
+}
+.note-container:hover{
+    transform: scale(1.1);
+}
+.note-container:hover .trash-icon{
+   display: inline;
+}
+.note-creationDate{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(245, 245, 245);
+}
+.delete-dialog,.edit-dialog{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.dialog-content{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.dialog-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.btn{
+    padding: 5px 10px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.dialog-actions .btn:nth-child(2){
+    color: red;
+}
+.add-note{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 30px;
+}
+.add-note-form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.input{
+    border: none;
+    padding: 10px;
+    outline: none;
+}
 .spinner {
     width: 48px;
     height: 48px;

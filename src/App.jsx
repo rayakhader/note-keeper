@@ -3,6 +3,8 @@ import './App.css';
 import NotesContainer from './components/NotesContainer';
 import Spinner from './components/Spinner';
 import Empty from './components/Empty';
+import AddNote from './components/AddNote';
+import { FetchNotesAPI } from './APIs/FetchNotesAPI';
 
 function App() {
   const [query, setQuery] = useState('')
@@ -13,21 +15,8 @@ function App() {
     const endpoint = query ?
       `http://localhost:3000/api/notes/search?query=${query}` :
       `http://localhost:3000/api/notes`;
-
     setIsLoading(true)
-    fetch(endpoint)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        console.log(data.message === 'No notes found')
-        if (data.message === 'No notes found') {
-          setNotes([])
-        } else {
-          setNotes(data)
-        }
-      })
-      .catch(err => console.log(err))
-      .finally(() => setIsLoading(false))
+    FetchNotesAPI(endpoint, setNotes, setIsLoading)
   }
   useEffect(() => {
     fetchNotes()
@@ -40,10 +29,11 @@ function App() {
           <input className='search-input' onChange={(e) => setQuery(e.target.value)} type='text' placeholder='search...' value={query} />
         </nav>
       </header>
+      <AddNote refetchNotes={fetchNotes} />
       {
         isLoading ? <Spinner /> : (
           notes.length === 0 ? <Empty /> :
-            <NotesContainer notes={notes} fetchNotes={fetchNotes} />
+            <NotesContainer notes={notes} refetchNotes={fetchNotes} />
         )
       }
 
